@@ -1,3 +1,3 @@
 # pong-game
 
-## [Demo](index.md)
+## [Demo](demo.html)
