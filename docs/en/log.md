@@ -14,4 +14,6 @@
 
 7. Pong Game, pong ball draft.
 
-8. Pong ball spec, implementation, integration.
+8. Pong ball spec, implementation, integration, test, commit.
+
+9. Pong paddle spec, implementation, integration, test, commit.

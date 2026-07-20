@@ -29,20 +29,23 @@ Most offen ocurring scheme of generating code:
 [`docs/en/log.md`](log.md) - pomodoro log, format: date and numbered list describing what each pomodoro was about. To hold attention.    
 `docs/en/project-history.md` - this file with notes about project. Log that should show what project is about.  
 
-### Drafts
-
 In draft [Pong Game](draft/pong-game.md).  
 High level project assumptions.  
-Ball defined in draft [Pong Ball](draft/pong-ball.md)
 
-### Prompts
-
+Prompts:
 - Given context generate spec that will drive implementation of drafted GameObject.
-- Given context implement GameObject according to spec and context.
+- Given context implement GameObject according to spec and context. Use engine lib if it provides needed functionality.
 - Integrate given GameObject in Game.
 
 ### Simple Ball
 
+Ball defined in draft [Pong Ball](draft/pong-ball.md)
 Spec was generated for [ball](spec/ball.md).  
 Implemented, integrated with game and tested.  
-Committed: feat(ball): add pong ball
+Committed: feat(ball): add pong ball.  
+
+### Simple Paddle
+
+Spec was generated for [paddle](spec/paddle.md).  
+Implemented, integrated with game and tested.  
+Committed: feat(paddle): add pong paddles.  
