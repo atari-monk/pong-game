@@ -1,0 +1,32 @@
+{
+    "question": {
+        "question": [
+            "/home/atari-monk/atari-monk/project/pong-game/docs/_prompt.md"
+        ],
+        "context": [
+            ""
+        ]
+    },
+    "implementation": {
+        "rules": [
+            "/home/atari-monk/atari-monk/project/prompts/rules/code.md"
+        ],
+        "requirements": [
+            "/home/atari-monk/atari-monk/project/pong-game/docs/_prompt.md"
+        ],
+        "codebase": [
+            "/home/atari-monk/atari-monk/project/pong-game/src/shared/ball.ts",
+            "/home/atari-monk/atari-monk/project/pong-game/src/game.ts"
+        ]
+    },
+    "engine-codebase": [
+        "/home/atari-monk/atari-monk/project/atom-engine/docs/en/game-object.md",
+        "/home/atari-monk/atari-monk/project/atom-engine/src/index.ts",
+        "/home/atari-monk/atari-monk/project/atom-engine/src/core.ts",
+        "/home/atari-monk/atari-monk/project/atom-engine/src/loop.ts",
+        "/home/atari-monk/atari-monk/project/atom-engine/src/input.ts",
+        "/home/atari-monk/atari-monk/project/atom-engine/src/mouse.ts",
+        "/home/atari-monk/atari-monk/project/atom-engine/src/audio.ts",
+        "/home/atari-monk/atari-monk/project/atom-engine/src/renderer.ts"
+    ]
+}
