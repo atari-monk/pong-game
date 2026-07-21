@@ -49,3 +49,10 @@ Committed: feat(ball): add pong ball.
 Spec was generated for [paddle](spec/paddle.md).  
 Implemented, integrated with game and tested.  
 Committed: feat(paddle): add pong paddles.  
+
+### Game Rules
+
+- [Draft](draft/game-rules.md)
+- [Spec](spec/game-rules.md)
+Implemented, integrated with game and tested.  
+Committed: feat(game-rules): add game rules.  

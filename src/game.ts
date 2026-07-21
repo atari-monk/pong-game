@@ -13,6 +13,11 @@ import {
     renderPaddle,
     collidesWithPaddle
 } from "./shared/paddle";
+import {
+    type GameRulesState,
+    createGameRules,
+    updateGameRules
+} from "./shared/game-rules";
 
 export type GameState = {
     renderer: Renderer;
@@ -21,6 +26,7 @@ export type GameState = {
     ball: BallState;
     leftPaddle: PaddleState;
     rightPaddle: PaddleState;
+    gameRules: GameRulesState;
 };
 
 export function createGame(
@@ -37,7 +43,8 @@ export function createGame(
         audio,
         ball: createBall(width, height),
         leftPaddle: createPaddle(width, height, "left"),
-        rightPaddle: createPaddle(width, height, "right")
+        rightPaddle: createPaddle(width, height, "right"),
+        gameRules: createGameRules()
     };
 }
 
@@ -75,6 +82,13 @@ export function updateGame(
     ) {
         bounceBallHorizontal(state.ball);
     }
+
+    updateGameRules(
+        state.gameRules,
+        state.ball,
+        state.leftPaddle,
+        state.rightPaddle
+    );
 }
 
 export function renderGame(

@@ -1,0 +1,9 @@
+- I have 2 paddles and ball
+- What i miss is ball reseting
+- It may be implemented but i think we need game controller with logic about game as module integrated with game objects and game
+- Lets first talk about it
+- We have game objects, ball, paddles 
+- We have game orchestator witch controlls life cycle
+- Where should we put game logic ?
+- Should we just communicate ball and paddles in game ?
+- Or should we generate another entity like game controller that handles game life cycle as a separate module ?

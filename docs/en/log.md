@@ -17,3 +17,9 @@
 8. Pong ball spec, implementation, integration, test, commit.
 
 9. Pong paddle spec, implementation, integration, test, commit.
+
+## 2026-07-21
+
+1. Game rules draft, spec.
+
+2. Game rules implementation, integration, test, commit.
