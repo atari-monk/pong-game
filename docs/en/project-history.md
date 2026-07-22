@@ -60,3 +60,7 @@ Committed: feat(game-rules): add game rules.
 ### Score
 
 Added score that shows for 3s after scoring.  
+
+### AI
+
+Left and Right player can be ai, 100 is perfect, 0 is off.  

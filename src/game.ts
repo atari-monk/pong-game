@@ -24,6 +24,11 @@ import {
     updateScore,
     renderScore
 } from "./shared/score";
+import {
+    type AIState,
+    createAI,
+    updateAI
+} from "./shared/ai";
 
 export type GameState = {
     renderer: Renderer;
@@ -32,6 +37,8 @@ export type GameState = {
     ball: BallState;
     leftPaddle: PaddleState;
     rightPaddle: PaddleState;
+    leftAI: AIState;
+    rightAI: AIState;
     gameRules: GameRulesState;
     score: ScoreState;
 };
@@ -51,6 +58,8 @@ export function createGame(
         ball: createBall(width, height),
         leftPaddle: createPaddle(width, height, "left"),
         rightPaddle: createPaddle(width, height, "right"),
+        leftAI: createAI("left", 20),
+        rightAI: createAI("right", 0),
         gameRules: createGameRules(),
         score: createScore()
     };
@@ -60,21 +69,39 @@ export function updateGame(
     state: GameState,
     dt: number
 ): void {
-    updatePaddle(
-        state.leftPaddle,
-        state.input,
-        "w",
-        "s",
-        dt
-    );
+    if (state.leftAI.enabled) {
+        updateAI(
+            state.leftAI,
+            state.leftPaddle,
+            state.ball,
+            dt
+        );
+    } else {
+        updatePaddle(
+            state.leftPaddle,
+            state.input,
+            "w",
+            "s",
+            dt
+        );
+    }
 
-    updatePaddle(
-        state.rightPaddle,
-        state.input,
-        "ArrowUp",
-        "ArrowDown",
-        dt
-    );
+    if (state.rightAI.enabled) {
+        updateAI(
+            state.rightAI,
+            state.rightPaddle,
+            state.ball,
+            dt
+        );
+    } else {
+        updatePaddle(
+            state.rightPaddle,
+            state.input,
+            "ArrowUp",
+            "ArrowDown",
+            dt
+        );
+    }
 
     updateScore(
         state.score,

@@ -37,7 +37,7 @@ export function createBall(
     fieldWidth: number,
     fieldHeight: number,
     radius = 8,
-    speed = 400
+    speed = 700
 ): BallState {
     const ball: BallState = {
         x: fieldWidth / 2,

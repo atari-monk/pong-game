@@ -1,0 +1,8 @@
+- Right now i can only play with wsad and arrows
+- That is good for 2 players mode on 1 pc
+- I am alone here so lets write ai module
+- How should we do it ?
+- Should it have same interface as player and just simulate using keys ?
+- Lets enable ai on left or right player
+- Implement it with struct and function ai module like all till now
+- Lets introduce difficulty param, 100 is perfect, 0 is worst ai
