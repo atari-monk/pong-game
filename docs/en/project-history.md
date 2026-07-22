@@ -56,3 +56,7 @@ Committed: feat(paddle): add pong paddles.
 - [Spec](spec/game-rules.md)
 Implemented, integrated with game and tested.  
 Committed: feat(game-rules): add game rules.  
+
+### Score
+
+Added score that shows for 3s after scoring.  

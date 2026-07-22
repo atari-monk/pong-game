@@ -18,6 +18,12 @@ import {
     createGameRules,
     updateGameRules
 } from "./shared/game-rules";
+import {
+    type ScoreState,
+    createScore,
+    updateScore,
+    renderScore
+} from "./shared/score";
 
 export type GameState = {
     renderer: Renderer;
@@ -27,6 +33,7 @@ export type GameState = {
     leftPaddle: PaddleState;
     rightPaddle: PaddleState;
     gameRules: GameRulesState;
+    score: ScoreState;
 };
 
 export function createGame(
@@ -44,7 +51,8 @@ export function createGame(
         ball: createBall(width, height),
         leftPaddle: createPaddle(width, height, "left"),
         rightPaddle: createPaddle(width, height, "right"),
-        gameRules: createGameRules()
+        gameRules: createGameRules(),
+        score: createScore()
     };
 }
 
@@ -68,6 +76,12 @@ export function updateGame(
         dt
     );
 
+    updateScore(
+        state.score,
+        state.input,
+        dt
+    );
+
     updateBall(state.ball, dt);
 
     if (
@@ -85,6 +99,7 @@ export function updateGame(
 
     updateGameRules(
         state.gameRules,
+        state.score,
         state.ball,
         state.leftPaddle,
         state.rightPaddle
@@ -102,4 +117,5 @@ export function renderGame(
     renderBall(state.ball, ctx);
     renderPaddle(state.leftPaddle, ctx);
     renderPaddle(state.rightPaddle, ctx);
+    renderScore(state.score, ctx);
 }

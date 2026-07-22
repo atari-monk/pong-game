@@ -2,10 +2,10 @@ import type { BallState } from "../shared/ball";
 import { resetBall } from "../shared/ball";
 import type { PaddleState } from "../shared/paddle";
 import { resetPaddle } from "../shared/paddle";
+import type { ScoreState } from "../shared/score";
+import { addScore } from "../shared/score";
 
 export type GameRulesState = {
-    leftScore: number;
-    rightScore: number;
     winner?: "left" | "right";
     winningScore: number;
 };
@@ -14,14 +14,13 @@ export function createGameRules(
     winningScore = 10
 ): GameRulesState {
     return {
-        leftScore: 0,
-        rightScore: 0,
         winningScore
     };
 }
 
 export function updateGameRules(
     rules: GameRulesState,
+    score: ScoreState,
     ball: BallState,
     leftPaddle: PaddleState,
     rightPaddle: PaddleState
@@ -31,9 +30,9 @@ export function updateGameRules(
     }
 
     if (ball.x + ball.radius < 0) {
-        rules.rightScore++;
+        addScore(score, "right");
 
-        if (rules.rightScore >= rules.winningScore) {
+        if (score.rightScore >= rules.winningScore) {
             rules.winner = "right";
         }
 
@@ -45,9 +44,9 @@ export function updateGameRules(
     }
 
     if (ball.x - ball.radius > ball.fieldWidth) {
-        rules.leftScore++;
+        addScore(score, "left");
 
-        if (rules.leftScore >= rules.winningScore) {
+        if (score.leftScore >= rules.winningScore) {
             rules.winner = "left";
         }
 

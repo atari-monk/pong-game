@@ -1,10 +1,13 @@
 {
     "question": {
         "question": [
-            ""
+            "/home/atari-monk/atari-monk/project/pong-game/docs/_prompt.md"
         ],
         "context": [
-            ""
+            "/home/atari-monk/atari-monk/project/pong-game/src/shared/ball.ts",
+            "/home/atari-monk/atari-monk/project/pong-game/src/shared/paddle.ts",
+            "/home/atari-monk/atari-monk/project/pong-game/src/shared/game-rules.ts",
+            "/home/atari-monk/atari-monk/project/pong-game/src/game.ts"
         ]
     },
     "implementation": {
@@ -12,12 +15,12 @@
             "/home/atari-monk/atari-monk/project/prompts/rules/code.md"
         ],
         "requirements": [
-            "/home/atari-monk/atari-monk/project/pong-game/docs/_prompt.md",
-            "/home/atari-monk/atari-monk/project/pong-game/docs/en/spec/game-rules.md"
+            "/home/atari-monk/atari-monk/project/pong-game/docs/_prompt.md"
         ],
         "codebase": [
             "/home/atari-monk/atari-monk/project/pong-game/src/shared/ball.ts",
             "/home/atari-monk/atari-monk/project/pong-game/src/shared/paddle.ts",
+            "/home/atari-monk/atari-monk/project/pong-game/src/shared/game-rules.ts",
             "/home/atari-monk/atari-monk/project/pong-game/src/game.ts"
         ]
     },

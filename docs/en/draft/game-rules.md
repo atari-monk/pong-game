@@ -7,3 +7,11 @@
 - Where should we put game logic ?
 - Should we just communicate ball and paddles in game ?
 - Or should we generate another entity like game controller that handles game life cycle as a separate module ?
+
+- I need to render points
+- Lets do it for 3s when players score
+- Lets show points on P key
+- Lets put it top center
+- I think we should implement it in game-rules dont u think ?
+- Is that clear ? 
+- Do u have some follow up questions ?
