@@ -44,6 +44,7 @@ export type GameState = {
     started: boolean;
     countdown: number;
     countdownActive: boolean;
+    gameOverTimer: number;
 };
 
 export function createGame(
@@ -67,16 +68,23 @@ export function createGame(
         score: createScore(),
         started: false,
         countdown: 3,
-        countdownActive: false
+        countdownActive: false,
+        gameOverTimer: 0
     };
 }
 
 export function startGame(
     state: GameState
 ): void {
+    state.gameRules.winner = undefined;
+    state.score.leftScore = 0;
+    state.score.rightScore = 0;
+    state.gameOverTimer = 0;
     state.countdown = 3;
     state.countdownActive = true;
     state.started = false;
+    state.ball.x = state.ball.fieldWidth / 2;
+    state.ball.y = state.ball.fieldHeight / 2;
     state.ball.vx = 0;
     state.ball.vy = 0;
 }
@@ -95,6 +103,34 @@ function updateCountdown(
         state.countdownActive = false;
         state.started = true;
         state.ball.vx = state.ball.speed * (Math.random() < 0.5 ? -1 : 1);
+    }
+}
+
+function updateGameOver(
+    state: GameState,
+    dt: number
+): void {
+    if (!state.gameRules.winner) {
+        return;
+    }
+
+    state.gameOverTimer += dt;
+
+    if (state.gameOverTimer < 3) {
+        return;
+    }
+
+    state.started = false;
+
+    const overlay = document.getElementById("start-overlay");
+    const canvas = document.getElementById("canvas") as HTMLCanvasElement | null;
+
+    if (overlay) {
+        overlay.style.display = "flex";
+    }
+
+    if (canvas) {
+        canvas.style.display = "none";
     }
 }
 
@@ -117,10 +153,35 @@ function renderCountdown(
     );
 }
 
+function renderGameOver(
+    state: GameState,
+    ctx: CanvasRenderingContext2D
+): void {
+    if (!state.gameRules.winner) {
+        return;
+    }
+
+    ctx.fillStyle = "white";
+    ctx.font = "40px Arial";
+    ctx.textAlign = "center";
+
+    ctx.fillText(
+        `${state.score.leftScore} : ${state.score.rightScore}`,
+        ctx.canvas.width / 2,
+        ctx.canvas.height / 2
+    );
+}
+
 export function updateGame(
     state: GameState,
     dt: number
 ): void {
+    updateGameOver(state, dt);
+
+    if (state.gameRules.winner) {
+        return;
+    }
+
     updateCountdown(state, dt);
 
     if (state.countdownActive || !state.started) {
@@ -199,9 +260,18 @@ export function renderGame(
 
     state.renderer.clear();
 
+    if (state.gameRules.winner) {
+        renderGameOver(state, ctx);
+        return;
+    }
+
     renderBall(state.ball, ctx);
     renderPaddle(state.leftPaddle, ctx);
     renderPaddle(state.rightPaddle, ctx);
-    renderScore(state.score, ctx);
+
+    if (!state.countdownActive) {
+        renderScore(state.score, ctx);
+    }
+
     renderCountdown(state, ctx);
 }

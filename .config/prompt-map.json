@@ -16,14 +16,16 @@
             "/home/atari-monk/atari-monk/project/prompts/rules/code.md"
         ],
         "requirements": [
-            "/home/atari-monk/atari-monk/project/pong-game/docs/en/draft/bugs.md"
+            "/home/atari-monk/atari-monk/project/pong-game/docs/_prompt.md"
         ],
         "codebase": [
             "/home/atari-monk/atari-monk/project/pong-game/src/shared/ball.ts",
             "/home/atari-monk/atari-monk/project/pong-game/src/main.ts",
-            "/home/atari-monk/atari-monk/project/pong-game/src/game.ts"
+            "/home/atari-monk/atari-monk/project/pong-game/src/game.ts",
+            "/home/atari-monk/atari-monk/project/pong-game/src/shared/game-rules.ts"
         ]
     },
+    "prompt": "/home/atari-monk/atari-monk/project/pong-game/docs/_prompt.md",
     "base": "/home/atari-monk/atari-monk/project/pong-game",
     "engine-codebase": [
         "/home/atari-monk/atari-monk/project/atom-engine/docs/en/game-object.md",

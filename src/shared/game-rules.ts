@@ -11,7 +11,7 @@ export type GameRulesState = {
 };
 
 export function createGameRules(
-    winningScore = 10
+    winningScore = 5
 ): GameRulesState {
     return {
         winningScore
