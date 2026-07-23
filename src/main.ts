@@ -5,7 +5,7 @@ import {
     Audio,
     GameLoop
 } from "atari-monk-atom-engine";
-import { createGame, updateGame, renderGame } from "./game";
+import { createGame, updateGame, renderGame, startGame } from "./game";
 
 const renderer = new Renderer("canvas");
 const input = new Input();
@@ -24,6 +24,8 @@ const canvas = document.getElementById("canvas") as HTMLCanvasElement;
 overlay?.addEventListener("click", async () => {
     overlay.style.display = "none";
     canvas.style.display = "block";
+
+    startGame(game);
 
     await audio.playMusicAfterGesture("bg", 0.5);
 });

@@ -41,6 +41,9 @@ export type GameState = {
     rightAI: AIState;
     gameRules: GameRulesState;
     score: ScoreState;
+    started: boolean;
+    countdown: number;
+    countdownActive: boolean;
 };
 
 export function createGame(
@@ -61,14 +64,69 @@ export function createGame(
         leftAI: createAI("left", 20),
         rightAI: createAI("right", 0),
         gameRules: createGameRules(),
-        score: createScore()
+        score: createScore(),
+        started: false,
+        countdown: 3,
+        countdownActive: false
     };
+}
+
+export function startGame(
+    state: GameState
+): void {
+    state.countdown = 3;
+    state.countdownActive = true;
+    state.started = false;
+    state.ball.vx = 0;
+    state.ball.vy = 0;
+}
+
+function updateCountdown(
+    state: GameState,
+    dt: number
+): void {
+    if (!state.countdownActive) {
+        return;
+    }
+
+    state.countdown -= dt;
+
+    if (state.countdown <= 0) {
+        state.countdownActive = false;
+        state.started = true;
+        state.ball.vx = state.ball.speed * (Math.random() < 0.5 ? -1 : 1);
+    }
+}
+
+function renderCountdown(
+    state: GameState,
+    ctx: CanvasRenderingContext2D
+): void {
+    if (!state.countdownActive) {
+        return;
+    }
+
+    ctx.fillStyle = "white";
+    ctx.font = "48px Arial";
+    ctx.textAlign = "center";
+
+    ctx.fillText(
+        Math.ceil(state.countdown).toString(),
+        ctx.canvas.width / 2,
+        70
+    );
 }
 
 export function updateGame(
     state: GameState,
     dt: number
 ): void {
+    updateCountdown(state, dt);
+
+    if (state.countdownActive || !state.started) {
+        return;
+    }
+
     if (state.leftAI.enabled) {
         updateAI(
             state.leftAI,
@@ -145,4 +203,5 @@ export function renderGame(
     renderPaddle(state.leftPaddle, ctx);
     renderPaddle(state.rightPaddle, ctx);
     renderScore(state.score, ctx);
+    renderCountdown(state, ctx);
 }

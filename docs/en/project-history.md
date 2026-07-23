@@ -64,3 +64,7 @@ Added score that shows for 3s after scoring.
 ### AI
 
 Left and Right player can be ai, 100 is perfect, 0 is off.  
+
+### Countdown
+
+After start btn click, 3s countdown to start ball.  

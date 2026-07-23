@@ -1,0 +1,3 @@
+- after click start game should print 3s countdown in center top
+- currently ball starts imediatly
+- can u fix it given main and game code ?
